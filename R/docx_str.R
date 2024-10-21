@@ -274,6 +274,7 @@ wml_rows <- function(value, split = FALSE) {
     NULL,
     NULL
   )]
+  tab_data[tab_data$colspan < 1, `:=`(c("wml"), list(gsub("<w:hyperlink[^>]*>.*?</w:hyperlink>", "", .SD$wml, perl = TRUE)))]
 
   tab_data[tab_data$colspan < 1, c("wml") := list(
     gsub("<w:r\\b[^<]*>[^<]*(?:<[^<]*)*</w:r>", "", .SD$wml)
